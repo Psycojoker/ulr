@@ -40,12 +40,14 @@ class Browser:
         self.web_view = webkit.WebView()
         self.web_view.open(self.urls[0][:-1])
 
-        toolbar = gtk.Toolbar()
-
         #entry bar for typing in and display URLs, when they type in a site
         #and hit enter the on_active function is called
         self.url_bar = gtk.Entry()
         self.url_bar.connect("activate", self.on_active)
+
+        self.bar = gtk.Label()
+        self.bar.set_single_line_mode(True)
+        self.bar.set_text(self.urls[0][:-1] + "               " + "%i/%i" % (self.position + 1, len(self.urls)))
 
         #anytime a site is loaded the update_buttons will be called
         self.web_view.connect("load_committed", self.update_buttons)
@@ -55,8 +57,7 @@ class Browser:
 
 
         vbox = gtk.VBox(False, 0)
-        #vbox.pack_start(toolbar, False, True, 0)
-        vbox.pack_start(self.url_bar, False, True, 0)
+        vbox.pack_start(self.bar, False, True, 0)
         vbox.add(scroll_window)
 
         self.window.add(vbox)
@@ -143,6 +144,7 @@ class Browser:
             self.position += 1
             print "loading:", self.urls[self.position][:-1]
             self.web_view.open(self.urls[self.position][:-1])
+            self.bar.set_text(self.urls[self.position][:-1] + "               " + "%i/%i" % (self.position + 1, len(self.urls)))
         elif self.position == len(self.urls) - 1:
             print "show finish", self.position + 1
             data = '<html><head><title>Hello</title></head><body><center><h1>Finish</h1><h3>One more step forward and the browser will quit and empty the list</h3></center></body></html>'
@@ -160,6 +162,7 @@ class Browser:
             print "go back", self.position - 1
             self.position -= 1
             self.web_view.open(self.urls[self.position][:-1])
+            self.bar.set_text(self.urls[self.position][:-1] + "               " + "%i/%i" % (self.position + 1, len(self.urls)))
         elif self.position == 0:
             self.position -= 1
             print "show begin"
