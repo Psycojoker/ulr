@@ -8,6 +8,8 @@ import sys
 import webkit
 import gobject
 
+__dir__ = os.path.dirname(os.path.abspath(__file__))
+
 class Browser:
     def delete_event(self, widget, event, data=None):
         return False
@@ -16,7 +18,7 @@ class Browser:
         gtk.main_quit()
 
     def open_list(self):
-        self.urls = open("urls", "r").readlines()
+        self.urls = open(os.path.join(__dir__, "urls"), "r").readlines()
         if len(self.urls) == 0:
             print "List empty, fill list before launching"
             sys.exit(0)
@@ -133,7 +135,7 @@ class Browser:
                 print "#fail"
 
     def save(self):
-        urls = open("urls", "w")
+        urls = open(os.path.join(__dir__, "urls"), "w")
         for i in self.urls[self.position + 1:]:
             urls.write(i)
 
@@ -171,7 +173,6 @@ class Browser:
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        __dir__ = os.path.dirname(os.path.abspath(__file__))
         open(os.path.join(__dir__, "urls"), "a").write(sys.argv[1] + "\n")
     else:
         browser = Browser()
