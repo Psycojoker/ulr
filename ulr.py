@@ -169,6 +169,10 @@ class Browser:
             data = '<html><head><title>Hello</title></head><body><center><h1>Begin</h1></center></body></html>'
             self.web_view.load_string(data, 'text/html', "utf-8", "about")
 
-if __name__ == '__main__':
-    browser = Browser()
-    browser.main()
+if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        open("/home/psycojoker/code/python/ulr/urls", "a").write(sys.argv[1] + "\n")
+    else:
+        browser = Browser()
+        browser.main()
+
