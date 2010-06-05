@@ -171,7 +171,8 @@ class Browser:
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        open("/home/psycojoker/code/python/ulr/urls", "a").write(sys.argv[1] + "\n")
+        __dir__ = os.path.dirname(os.path.abspath(__file__))
+        open(os.path.join(__dir__, "urls"), "a").write(sys.argv[1] + "\n")
     else:
         browser = Browser()
         browser.main()
