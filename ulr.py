@@ -104,6 +104,11 @@ class Browser:
            forwards.'''
         self.web_view.go_forward()
 
+    def bookmark(self):
+        '''Put the current url in a file named bookmarks'''
+        with open(os.path.join(__dir__, "bookmarks","a")) as f:
+            f.write(self.web_view.get_main_frame().get_uri() + "\n")
+
     def refresh(self, widget, data=None):
         '''Simple makes webkit reload the current back.'''
         self.web_view.reload()
@@ -137,6 +142,9 @@ class Browser:
         elif keyname == "s":
             print "saving"
             self.save()
+        elif keyname == "B":
+            self.bookmark()
+            print "added to bookmarks"
         elif keyname == "S":
             print "saving"
             self.save()
