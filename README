@@ -21,13 +21,14 @@ Shortcut
 --------
  * esc/q - quit without saving the progress in the list
  * n/space - move to the next url in the list
+ * b/p - move to the previous url in the list
  * r - reload the current page
  * s - save the current position in the list (remove the already seen url from
    the urls file)
  * S - same as s but quit just after
  * y - paste the url into the xclipboard (need xclip)
  * f - send the url to firefox (need firefox install)
- * b - save the url of the current website into a "bookmarks" file
+ * B - save the url of the current website into a "bookmarks" file
 
 Get the last version
 --------------------
