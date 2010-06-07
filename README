@@ -1,0 +1,35 @@
+Url List Viewer
+===============
+URL is a minimaliste browser that aim to move threw a list of urls that are in
+a file. It has been created to serves as a viewer for newsbeuter.
+
+Installation
+------------
+ULR need python 2.6, pygtk, gobject and pywebkit for gtk.
+
+Usage
+-----
+Simply put some urls into the file "urls" in the same dir that ULR then launch
+it.
+If you give ULR a command line arg it will put it into the urls file.
+
+Also, it's not very optimised, if you want to speed this up write a .sh file
+containing a shebang a "echo $1 >> /path/to/urls"
+
+
+Shortcut
+--------
+ * esc/q - quit without saving the progress in the list
+ * n/space - move to the next url in the list
+ * r - reload the current page
+ * s - save the current position in the list (remove the already seen url from
+   the urls file)
+ * S - same as s but quit just after
+ * y - paste the url into the xclipboard (need xclip)
+ * f - send the url to firefox (need firefox install)
+ * b - save the url of the current website into a "bookmarks" file
+
+Get the last version
+--------------------
+
+git clone git://git.worlddomination.be/python/ulr.git Remarques
