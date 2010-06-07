@@ -82,7 +82,7 @@ class Browser:
         self.window.add(vbox)
         self.window.show_all()
 
-    def on_active(self, widge, data=None):
+    def on_active(self, widget, data=None):
         '''When the user enters an address in the bar, we check to make
            sure they added the http://, if not we add it for them.  Once
            the url is correct, we just ask webkit to open that site.'''
