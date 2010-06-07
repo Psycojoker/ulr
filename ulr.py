@@ -106,7 +106,7 @@ class Browser:
 
     def bookmark(self):
         '''Put the current url in a file named bookmarks'''
-        with open(os.path.join(__dir__, "bookmarks","a")) as f:
+        with open(os.path.join(__dir__, "bookmarks"), "a") as f:
             f.write(self.web_view.get_main_frame().get_uri() + "\n")
 
     def refresh(self, widget, data=None):
